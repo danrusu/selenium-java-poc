@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import ro.qatools.utils.Browser;
 
 public class BaseTest {
-    WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeEach
     void setup() {
