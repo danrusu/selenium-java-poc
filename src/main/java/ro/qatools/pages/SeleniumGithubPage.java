@@ -9,7 +9,7 @@ public class SeleniumGithubPage {
     private WebDriver driver;
     static final String GITHUB_URL = "https://github.com/SeleniumHQ/selenium";
 
-    private final By cloneMenuButton = xpath("//get-repo//*[text()=\"Code\"]");
+    private final By codeMenuButton = xpath("//get-repo//*[text()=\"Code\"]");
     private final By cloneUrlInput = xpath(
             "//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]");
     private final By releasesCount = xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]");
@@ -24,8 +24,8 @@ public class SeleniumGithubPage {
         return this;
     }
 
-    public SeleniumGithubPage openCloneMenu(){
-        driver.findElement(cloneMenuButton).click();
+    public SeleniumGithubPage openCodeMenu(){
+        driver.findElement(codeMenuButton).click();
         return this;
     }
 

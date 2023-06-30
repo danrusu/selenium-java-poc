@@ -17,7 +17,7 @@ public class FirstTest extends BaseTest {
     void testSeleniumIUrlAndReleaseCount() throws IOException {
         var seleniumGithubPage = new SeleniumGithubPage(driver);
 
-        seleniumGithubPage.navigate().openCloneMenu();
+        seleniumGithubPage.navigate().openCodeMenu();
         var cloneUrl = seleniumGithubPage.getCloneUrl();
         var releasesCount = seleniumGithubPage.getReleasesCount();
 
