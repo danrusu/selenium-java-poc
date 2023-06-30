@@ -1,9 +1,6 @@
 package ro.qatools;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import ro.qatools.pages.SeleniumGithubPage;
 
 import java.io.IOException;
