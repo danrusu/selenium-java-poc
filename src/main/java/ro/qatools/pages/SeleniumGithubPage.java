@@ -3,9 +3,17 @@ package ro.qatools.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static org.openqa.selenium.By.xpath;
+
 public class SeleniumGithubPage {
     private WebDriver driver;
     static final String GITHUB_URL = "https://github.com/SeleniumHQ/selenium";
+
+    private final By cloneMenuButton = xpath("//get-repo//*[text()=\"Code\"]");
+    private final By cloneUrlInput = xpath(
+            "//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]");
+    private final By releasesCount = xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]");
+
 
     public SeleniumGithubPage(WebDriver driver) {
         this.driver = driver;
@@ -17,20 +25,18 @@ public class SeleniumGithubPage {
     }
 
     public SeleniumGithubPage openCloneMenu(){
-        driver.findElement(By.xpath("//get-repo//*[text()=\"Code\"]")).click();
+        driver.findElement(cloneMenuButton).click();
         return this;
     }
 
     public String getCloneUrl() {
-        return driver
-                .findElement(By.xpath("//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]"))
+        return driver.findElement(cloneUrlInput)
                 .getAttribute("value")
                 .trim();
     }
 
     public String getReleasesCount() {
-        return driver
-                .findElement(By.xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]"))
+        return driver.findElement(releasesCount)
                 .getText()
                 .trim();
     }
