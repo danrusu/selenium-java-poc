@@ -1,7 +1,7 @@
 package ro.qatools;
 
 import org.junit.jupiter.api.Test;
-import ro.qatools.pages.SeleniumGithubPage;
+import ro.qatools.pages.github.selenium.HomePage;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,11 +15,11 @@ public class FirstTest extends BaseTest {
 
     @Test
     void testSeleniumIUrlAndReleaseCount() throws IOException {
-        var seleniumGithubPage = new SeleniumGithubPage(driver);
+        var homePage = new HomePage(driver);
 
-        seleniumGithubPage.navigate().openCodeMenu();
-        var cloneUrl = seleniumGithubPage.getCloneUrl();
-        var releasesCount = seleniumGithubPage.getReleasesCount();
+        homePage.navigate().openCodeMenu();
+        var cloneUrl = homePage.getCloneUrl();
+        var releasesCount = homePage.getReleasesCount();
 
         String jsonInfo = toJSONString(Map.of(
                 "cloneUrl", cloneUrl,
