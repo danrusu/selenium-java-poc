@@ -1,44 +1,36 @@
 package ro.qatools;
 
-import org.junit.jupiter.api.*;
-import ro.qatools.models.SeleniumGithubInfo;
+import org.json.simple.JSONObject;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import ro.qatools.utils.BrowserGetter;
+import ro.qatools.pages.SeleniumGithubPage;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class FirstTest {
-    private WebDriver driver;
+import static ro.qatools.utils.FileUtils.saveToDisk;
 
-    @BeforeEach
-    void setup() {
-        driver = new BrowserGetter().getDriver();
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.close();
-        driver.quit();
-    }
+public class FirstTest extends BaseTest {
 
     @Test
     void testSeleniumIUrlAndReleaseCount() throws IOException {
-        final String githubUrl = "https://github.com/SeleniumHQ/selenium";
-        driver.get(githubUrl);
-        driver.findElement(By.xpath("//get-repo//*[text()=\"Code\"]")).click();
-        String cloneUrl = driver
-                .findElement(By.xpath("//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]"))
-                .getAttribute("value");
+        var seleniumGithubPage = new SeleniumGithubPage(driver);
 
+        seleniumGithubPage.navigate().openCloneMenu();
+        var cloneUrl = seleniumGithubPage.getCloneUrl();
+        var releasesCount = seleniumGithubPage.getReleasesCount();
 
-        String releasesCount = driver
-                .findElement(By.xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]"))
-                .getText();
+        JSONObject jsonInfo = new JSONObject();
+        jsonInfo.put("cloneUrl", cloneUrl);
+        jsonInfo.put("releasesCount", Integer.parseInt(releasesCount));
 
-
-        new SeleniumGithubInfo(cloneUrl, Integer.parseInt(releasesCount)).saveToDisk();
+        saveToDisk(
+                Path.of(
+                        System.getProperty("user.dir"),
+                        "selenium-meta-data.json"
+                ),
+                jsonInfo
+        );
 
     }
 
