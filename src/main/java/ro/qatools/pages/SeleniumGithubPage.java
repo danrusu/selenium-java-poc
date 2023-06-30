@@ -24,13 +24,15 @@ public class SeleniumGithubPage {
     public String getCloneUrl() {
         return driver
                 .findElement(By.xpath("//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]"))
-                .getAttribute("value");
+                .getAttribute("value")
+                .trim();
     }
 
     public String getReleasesCount() {
         return driver
                 .findElement(By.xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]"))
-                .getText();
+                .getText()
+                .trim();
     }
 
 }
