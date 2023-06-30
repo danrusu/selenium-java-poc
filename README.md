@@ -1,9 +1,7 @@
 # Test Selenium GitHub repository page
 
 ## Prerequisites
-- 
 - JDK 17 
-- 
 - Maven 3
 
 ## Run tests
