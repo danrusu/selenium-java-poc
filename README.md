@@ -1,12 +1,12 @@
-# Test Selenium GitHub repository page
+# Practice Selenium with Java
 
 ## Prerequisites
-- JDK 17 
+- JDK 21 
 - Maven 3
 
 ## Run tests
 ```bash
-mvn clean test -Dbrowser=chrome
+mvn clean test #runs on Chrome by default
 # or
 mvn clean test -Dbrowser=firefox
 ```

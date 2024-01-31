@@ -12,9 +12,9 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.urlToBe;
 
 public class HomePage {
     private WebDriver driver;
-    public static final String URL = "https://github.com/SeleniumHQ/selenium";
+    public static final String URL = "file://github.com/SeleniumHQ/selenium";
 
-    private final By codeMenuButton = xpath("//get-repo//*[text()=\"Code\"]");
+    private final By codeMenuButton = xpath("//*[@data-selector=\"repos-split-pane-content\"]//*[text()=\"Code\"]");
     private final By cloneUrlInput = xpath(
             "//*[@id=\"local-panel\"]//input[@type=\"text\"][contains(@value,\"https\")]");
     private final By releasesCount = xpath("//*[contains(text(), \"Releases\")]//span[@class=\"Counter\"]");
