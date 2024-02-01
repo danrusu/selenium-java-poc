@@ -1,4 +1,4 @@
-package ro.qatools.utils;
+package com.softwaretestingboard.magento.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;

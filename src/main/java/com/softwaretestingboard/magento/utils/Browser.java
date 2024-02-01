@@ -1,4 +1,4 @@
-package ro.qatools.utils;
+package com.softwaretestingboard.magento.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
